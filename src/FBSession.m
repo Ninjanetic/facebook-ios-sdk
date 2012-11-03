@@ -1674,6 +1674,13 @@ static FBSession *g_activeSession = nil;
     for (NSHTTPCookie* cookie in facebookCookies) {
         [cookies deleteCookie:cookie];
     }
+    
+    facebookCookies = [cookies cookiesForURL:
+                                [NSURL URLWithString:@"https://login." FB_BASE_URL]];
+    
+    for (NSHTTPCookie* cookie in facebookCookies) {
+        [cookies deleteCookie:cookie];
+    }
 }
 
 + (NSDate*)expirationDateFromExpirationTimeString:(NSString*)expirationTime {
